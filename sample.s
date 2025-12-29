@@ -11,27 +11,27 @@ SECTION           CODE
 main:              
                   NOP
                   NOP                      
-                  JSR       clrDataRegisters
-                  JSR       addDirectReg
-                  JSR       addDirectRegister
-                  JSR       addDirectVariable
+                  BSR       clrDataRegisters
+                  BSR       addDirectReg
+                  BSR       addDirectRegister
+                  BSR       addDirectVariable
                   
                   move.l    #$10,d0
-                  JSR       condition                                
+                  BSR       condition                                
                 
                   move.l    #$20,d0
-                  JSR       condition
+                  BSR       condition
             
                   move.l    #05,loopCounter
-                  JSR       forloop
+                  BSR       forloop
 
                   move.l    #10,loopCounter
-                  JSR       forloop
+                  BSR       forloop
 
                   move.l    #5,loopCounter
-                  JSR       while
+                  BSR       while
 
-                  JSR       setErrorLevel
+                  BSR       setErrorLevel
                   RTS  
 
 ;*************************************
