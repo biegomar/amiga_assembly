@@ -12,6 +12,6 @@ DMA_I  SET     1
 
 ; DMACON register settings
             ;5432109876543210
-DMAINIT equ %1000001000000000   
+DMAINIT equ %1000001010000000   
 
        ENDC  
