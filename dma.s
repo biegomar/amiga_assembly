@@ -48,7 +48,7 @@ disable_os:
 
              move.w     #DMAINIT,DMACON(a5)          ; sets only dma channels that we will use 
 
-             move.l     #copperlistAlt,COP1LC(a5)    ; sets our copperlist address
+             move.l     #copperlist,COP1LC(a5)       ; sets our copperlist address
              move.w     #$FF,COPJMP1(a5)             ; starts copperlist execution  
 
              move.w     #0,FMODE(a5)                 ; sets 16 bit FMODE
