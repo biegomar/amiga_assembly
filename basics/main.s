@@ -79,6 +79,24 @@ checkRightShift:
   cmpi.b     #16,d1
   beq.s      rightShift           ; d1 is 16?
 
+checkRotateLeft:
+  clr.l      d1
+  move.b     #%10101010,d1
+.twice:
+  rol.b      #1,d1                ; rotate left d1 by 1
+  cmpi.b     #%10101010,d1
+  beq.s      rotateLeft
+  bra.s      .twice
+
+checkRotateRight:
+  clr.l      d1
+  move.l     #%10101010,d1
+.twice:
+  ror.b      #1,d1                ; rotate left d1 by 1
+  cmpi.b     #%10101010,d1
+  beq.s      rotateRight
+  bra.s      .twice
+  
   bra.s      mainloop
 
 ; ****************************************************************
@@ -116,8 +134,14 @@ leftShift:
   bra.s      checkRightShift
 
 rightShift:
-  bra.s      mainloop 
+  bra.s      checkRotateLeft 
     
+rotateLeft:
+  bra.s      checkRotateRight
+
+rotateRight:
+  bra.s      mainloop
+
 mainloop: 
   btst       #6,CIAAPRA           ; wait for button release              
   bne.s      mainloop
